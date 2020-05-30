@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
 export default class App extends React.Component {
   constructor(props){
@@ -21,6 +21,7 @@ export default class App extends React.Component {
   }
   render() {
     return (
+      <>
         <GooglePlacesAutocomplete
           placeholder='Enter Location'
           debounce={200}
@@ -41,7 +42,28 @@ export default class App extends React.Component {
             type: this.state.searchType,
             components: this.state.country
           }}
-        /> 
+        />
+        <View style={styles.mapContainer}>
+          <MapView
+            provider={PROVIDER_GOOGLE}
+            style={{flex: 1}}
+            region={{
+              latitude: this.state.location.lat,
+              longitude: this.state.location.lng,
+              latitudeDelta: 0.069,
+              longitudeDelta: 0.049,
+            }}    
+          >
+            <Marker 
+              coordinate={{ 
+                latitude: this.state.location.lat, 
+                longitude: this.state.location.lng 
+              }}
+              draggable />
+          </MapView>
+        </View>
+        
+      </>  
     );
   }
 }
@@ -53,4 +75,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  mapContainer: {
+    height: '70%'
+  }
 });
