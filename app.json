@@ -1,0 +1,17 @@
+{
+  "name": "my_react_native_google_places",
+  "displayName": "my_react_native_google_places",
+  "expo": {
+    "name": "my_react_native_google_places",
+    "slug": "expo-template-bare",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
