@@ -112,11 +112,11 @@ export default class App extends React.Component {
               draggable />
           </MapView>
         
-          <View style={{ position: 'absolute', top: 10, left: 0, right: 0  }}>
+          <View style={styles.autocomplete}>
             <GooglePlacesAutocomplete
               placeholder='Enter Location'
               debounce={200}
-              style={{backgroundColor: 'white', color: 'black'}}
+              style={styles.results}
               minLength={2}
               autoFocus={true}
               fetchDetails={true}
@@ -169,4 +169,14 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     flexDirection: 'row'
   },
+  autocomplete: {
+    position: 'absolute',
+    top: 10,
+    left: 0,
+    right: 0
+  },
+  results: {
+    backgroundColor: 'white', 
+    color: 'black'
+  }
 });
